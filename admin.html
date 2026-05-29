@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonwalk Challenge · Admin</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="theme-color" content="#080814">
+</head>
+<body class="app-body admin-body">
+  <div class="noise"></div>
+
+  <main class="dashboard-shell">
+    <header class="dashboard-header">
+      <div>
+        <p class="eyebrow">Panel de control</p>
+        <h1>Moonwalk Challenge</h1>
+        <p class="muted">Controla la trivia paso a paso. El estado actual te dice qué hacer enseguida.</p>
+      </div>
+      <div class="header-actions">
+        <button class="primary-btn" id="showQrBtn">Mostrar QR</button>
+        <a class="ghost-btn" id="openScreenLink" target="_blank" rel="noreferrer">Pantalla pública</a>
+        <a class="ghost-btn" id="openPlayerLink" target="_blank" rel="noreferrer">Vista jugador</a>
+      </div>
+    </header>
+
+    <section id="adminPanel">
+      <!-- Guía de estado -->
+      <div class="admin-steps card">
+        <span class="status-chip status-chip--big" id="statusChip">Sin preparar</span>
+        <p class="next-hint" id="nextHint">Pulsa “Preparar sala” para empezar.</p>
+      </div>
+
+      <div class="admin-grid">
+        <section class="card control-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Paso 1 · Sala</p>
+              <h2 id="adminRoomTitle">full80s2026</h2>
+            </div>
+          </div>
+
+          <div class="button-grid">
+            <button class="primary-btn" id="prepareRoomBtn">Preparar sala</button>
+            <button class="secondary-btn" id="openRegistrationBtn">Abrir inscripciones</button>
+            <button class="secondary-btn" id="closeRegistrationBtn">Cerrar inscripciones</button>
+            <button class="danger-btn" id="resetRoomBtn">Reiniciar todo</button>
+          </div>
+
+          <div class="admin-note qr-inline">
+            <div>
+              <strong>Link para jugadores</strong>
+              <code id="joinUrlText"></code>
+            </div>
+            <div class="qr-inline-actions">
+              <button class="tiny-btn" id="copyJoinBtn">Copiar link</button>
+              <button class="tiny-btn" id="showQrBtn2">Ver QR</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card question-admin-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Paso 2 · Pregunta</p>
+              <h2 id="currentQuestionTitle">Ninguna</h2>
+            </div>
+          </div>
+
+          <label for="questionSelect">Selecciona pregunta</label>
+          <select id="questionSelect"></select>
+
+          <div class="question-preview" id="questionPreview"></div>
+
+          <div class="button-grid">
+            <button class="primary-btn" id="launchQuestionBtn">▶ Lanzar pregunta</button>
+            <button class="primary-btn" id="nextQuestionBtn">⏭ Siguiente</button>
+            <button class="secondary-btn" id="lockQuestionBtn">Cerrar respuestas</button>
+            <button class="secondary-btn" id="scoreQuestionBtn">Calificar</button>
+            <button class="secondary-btn" id="showAnswerBtn">Mostrar respuesta</button>
+            <button class="secondary-btn" id="showLeaderboardBtn">Mostrar ranking</button>
+            <button class="danger-btn" id="clearQuestionBtn">Anular pregunta</button>
+          </div>
+        </section>
+
+        <section class="card participants-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Participantes</p>
+              <h2><span id="participantCount">0</span> conectados</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Puntos</th>
+                  <th>Correctas</th>
+                  <th>Racha</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="participantsTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card answers-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Respuestas en vivo</p>
+              <h2 id="answersTitle">Pregunta actual</h2>
+            </div>
+            <span class="status-chip" id="answersCountChip">0</span>
+          </div>
+          <div id="answersList" class="answers-list"></div>
+        </section>
+
+        <section class="card ranking-admin-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Paso 3 · Cierre</p>
+              <h2>Ranking</h2>
+            </div>
+          </div>
+          <div id="adminRankingList" class="ranking-list"></div>
+          <div class="button-grid">
+            <button class="primary-btn" id="finishGameBtn">🏆 Finalizar y mostrar ganador</button>
+            <button class="secondary-btn" id="exportResultsBtn">Exportar JSON</button>
+          </div>
+        </section>
+
+        <section class="card log-card">
+          <p class="eyebrow">Registro</p>
+          <div id="adminLog" class="admin-log"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Overlay de QR a pantalla completa -->
+  <div class="qr-overlay" id="qrOverlay" hidden>
+    <div class="qr-overlay-inner">
+      <p class="eyebrow">Escanea para jugar</p>
+      <h2 id="qrOverlayRoom">Sala</h2>
+      <div class="qr-overlay-img">
+        <img id="qrOverlayImg" alt="QR para unirse a la trivia">
+      </div>
+      <code id="qrOverlayUrl"></code>
+      <button class="primary-btn" id="closeQrBtn">Cerrar</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>

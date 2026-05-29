@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonwalk Challenge · Participante</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="theme-color" content="#080814">
+</head>
+<body class="app-body participant-body">
+  <div class="noise"></div>
+
+  <main class="mobile-shell">
+    <header class="hero-mini">
+      <p class="eyebrow">Full80s x Musicala</p>
+      <h1>Moonwalk Challenge</h1>
+      <p class="hero-prize" id="prizeLabel">Premio: 4 clases gratis en cualquier modalidad</p>
+    </header>
+
+    <section class="card register-card" id="registerView">
+      <div class="icon-badge">🕺</div>
+      <h2>Entra a la trivia</h2>
+      <p>Escribe tu nombre o apodo. Si pones una grosería, el admin te borra y todos fingimos madurez.</p>
+
+      <form id="joinForm" class="form-stack">
+        <label for="playerName">Tu nombre</label>
+        <input id="playerName" name="playerName" maxlength="24" autocomplete="name" placeholder="Ej: Laura">
+        <button class="primary-btn" type="submit">Entrar al reto</button>
+      </form>
+    </section>
+
+    <section class="card waiting-card" id="waitingView" hidden>
+      <div class="pulse-disc"></div>
+      <p class="eyebrow" id="roomLabel">Sala</p>
+      <h2 id="waitingTitle">Ya estás dentro</h2>
+      <p id="waitingText">Espera a que lancemos la siguiente pregunta.</p>
+      <div class="mini-stats">
+        <span id="participantScore">0 puntos</span>
+        <span id="participantCorrect">0 correctas</span>
+      </div>
+
+      <div class="instructions" id="waitingInstructions">
+        <h3 id="instructionsTitle">Cómo se juega</h3>
+        <ol id="instructionsList"></ol>
+      </div>
+    </section>
+
+    <section class="card question-card" id="questionView" hidden>
+      <div class="question-topline">
+        <span id="questionCount">Pregunta</span>
+        <span id="questionTimer">00</span>
+      </div>
+      <p class="category-pill" id="questionCategory">Categoría</p>
+      <h2 id="questionText">Pregunta</h2>
+      <div class="options-grid" id="optionsGrid"></div>
+    </section>
+
+    <section class="card sent-card" id="sentView" hidden>
+      <div class="icon-badge">✅</div>
+      <h2>Respuesta registrada</h2>
+      <p id="sentText">Esperemos que el WiFi y el destino hayan colaborado.</p>
+    </section>
+
+    <section class="card result-card" id="resultView" hidden>
+      <div class="icon-badge" id="resultIcon">🎤</div>
+      <h2 id="resultTitle">Resultado</h2>
+      <p id="resultText">Todavía no se revela el resultado.</p>
+      <div class="mini-stats">
+        <span id="resultPoints">0 puntos</span>
+        <span id="resultTime">—</span>
+      </div>
+    </section>
+
+    <section class="card leaderboard-card" id="leaderboardView" hidden>
+      <p class="eyebrow">Ranking parcial</p>
+      <h2>Top Moonwalk</h2>
+      <div id="leaderboardList" class="ranking-list"></div>
+    </section>
+
+    <section class="card final-card winner-stage" id="finalView" hidden>
+      <div class="winner-trophy" id="finalIcon">🏆</div>
+      <p class="eyebrow winner-eyebrow" id="finalEyebrow">★ Ganador ★</p>
+      <h2 id="winnerName" class="winner-name">Por definir</h2>
+      <p id="finalStanding" class="winner-score"></p>
+      <p id="finalMessage" class="muted"></p>
+      <p id="winnerPrize" class="winner-prize">Premio: 4 clases gratis en cualquier modalidad</p>
+    </section>
+  </main>
+
+  <script type="module" src="./js/participant.js"></script>
+</body>
+</html>

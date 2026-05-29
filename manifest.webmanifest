@@ -1,0 +1,9 @@
+{
+  "name": "Moonwalk Challenge",
+  "short_name": "Moonwalk",
+  "start_url": "./index.html?room=full80s2026",
+  "display": "standalone",
+  "background_color": "#080814",
+  "theme_color": "#080814",
+  "description": "Trivia en vivo de Michael Jackson para Full80s x Musicala."
+}

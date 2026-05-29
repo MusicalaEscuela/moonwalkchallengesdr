@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonwalk Challenge · Pantalla</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="theme-color" content="#080814">
+</head>
+<body class="app-body screen-body">
+  <div class="noise"></div>
+  <div class="stage-lights"></div>
+
+  <main class="screen-shell">
+    <header class="screen-header">
+      <p class="eyebrow">Full80s x Musicala</p>
+      <h1>Moonwalk Challenge</h1>
+      <p id="screenPrize">Premio: 4 clases gratis en cualquier modalidad</p>
+    </header>
+
+    <section class="screen-card" id="screenWaiting">
+      <div class="qr-layout">
+        <div>
+          <p class="eyebrow">Escanea para jugar</p>
+          <h2>Únete a la trivia en vivo</h2>
+          <p id="screenRoomLabel">Sala FULL80S2026</p>
+          <p class="big-number"><span id="screenParticipantCount">0</span> participantes</p>
+        </div>
+        <div class="qr-box">
+          <img id="qrImage" alt="QR para unirse">
+          <p id="joinShortUrl"></p>
+        </div>
+      </div>
+
+      <div class="instructions instructions--screen" id="screenInstructions">
+        <h3 id="screenInstructionsTitle">Cómo se juega</h3>
+        <ol id="screenInstructionsList"></ol>
+      </div>
+    </section>
+
+    <section class="screen-card question-stage" id="screenQuestion" hidden>
+      <div class="question-topline screen-question-topline">
+        <span id="screenQuestionCount">Pregunta</span>
+        <span id="screenQuestionTimer">00</span>
+      </div>
+      <p class="category-pill" id="screenQuestionCategory">Categoría</p>
+      <h2 id="screenQuestionText">Pregunta</h2>
+      <div class="screen-options" id="screenOptions"></div>
+      <p class="muted" id="answersCounter">0 respuestas recibidas</p>
+    </section>
+
+    <section class="screen-card answer-stage" id="screenAnswer" hidden>
+      <p class="eyebrow">Respuesta correcta</p>
+      <h2 id="correctAnswerText">—</h2>
+      <p id="correctAnswerDetail"></p>
+    </section>
+
+    <section class="screen-card leaderboard-stage" id="screenLeaderboard" hidden>
+      <p class="eyebrow">Ranking</p>
+      <h2>Top Moonwalk</h2>
+      <div id="screenRankingList" class="ranking-list ranking-list--screen"></div>
+    </section>
+
+    <section class="screen-card winner-stage" id="screenWinner" hidden>
+      <div class="winner-trophy">🏆</div>
+      <p class="eyebrow winner-eyebrow">★ Ganador del reto ★</p>
+      <h2 id="screenWinnerName" class="winner-name">Por definir</h2>
+      <p id="screenWinnerScore" class="winner-score"></p>
+      <p class="winner-prize">🎁 Premio: 4 clases gratis en cualquier modalidad</p>
+    </section>
+  </main>
+
+  <script type="module" src="./js/screen.js"></script>
+</body>
+</html>
