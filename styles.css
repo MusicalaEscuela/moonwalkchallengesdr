@@ -934,3 +934,35 @@ td small {
 @media (prefers-reduced-motion: reduce) {
   .timer-urgent { animation: none; }
 }
+
+/* ===== Crédito de marca: Musicala ===== */
+.brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  padding: 1rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.brand-footer strong {
+  color: var(--text);
+}
+
+.brand-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+
+.brand-footer--screen {
+  margin-top: 2.5rem;
+  font-size: 1.15rem;
+}
+
+.brand-logo--screen {
+  height: 48px;
+}
