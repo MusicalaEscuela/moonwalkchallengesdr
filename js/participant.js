@@ -345,6 +345,7 @@ function showFinal(room) {
   const iWon = winner && winner.participantId === participantId;
 
   if (iWon) {
+    $("#prizeLabel").hidden = false;
     $("#finalIcon").textContent = "🏆";
     $("#finalEyebrow").textContent = "★ ¡Ganaste! ★";
     $("#winnerName").textContent = winner.name;
@@ -358,15 +359,32 @@ function showFinal(room) {
       launchConfetti();
     }
   } else {
-    $("#finalIcon").textContent = me && myPosition < 3 ? "🎉" : "🎶";
-    $("#finalEyebrow").textContent = "Resultado final";
-    $("#winnerName").textContent = me ? me.name : (state.participant?.name || "¡Gracias por jugar!");
+    // Para quien no gana: ocultamos cualquier mención al premio
+    // (incluido el encabezado) y dejamos un cierre cálido.
+    $("#prizeLabel").hidden = true;
+    $("#winnerPrize").hidden = true;
+
+    const podio = me && myPosition < 3;
+    $("#finalIcon").textContent = podio ? "🎉" : "🎶";
+    $("#finalEyebrow").textContent = "Gracias por jugar";
+    $("#winnerName").textContent = me ? me.name : (state.participant?.name || "¡Gran juego!");
     $("#finalStanding").textContent = me
       ? `Quedaste #${myPosition + 1} de ${ranking.length} · ${me.score || 0} puntos`
       : "";
-    $("#finalMessage").textContent = winner
-      ? `🏆 Ganó ${winner.name}. ¡Gracias por bailar con nosotros!`
-      : "¡Gracias por jugar!";
-    $("#winnerPrize").hidden = true;
+    $("#finalMessage").textContent = pickFarewell(podio, winner);
   }
+}
+
+function pickFarewell(podio, winner) {
+  if (podio) {
+    return "¡Casi casi! Te quedaste en el podio. Eres puro ritmo. 🕺✨";
+  }
+  const messages = [
+    "Lo diste todo en la pista. ¡Gracias por bailar con nosotros! 💜",
+    "Hoy no fue, pero el estilo no se mide en puntos. ¡Eres grande! ✨",
+    "Lo importante es que la pasamos increíble. ¡Gracias por jugar! 🎶",
+    "El Rey del Pop estaría orgulloso de tu energía. ¡Hasta la próxima! 🕺"
+  ];
+  const pick = messages[Math.floor(Math.random() * messages.length)];
+  return winner ? `${pick}` : pick;
 }
